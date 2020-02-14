@@ -14,6 +14,6 @@ namespace SuperheroProject.Data
         {
         }
 
-        public DbSet<Superhero> Superheroes { get; set; }
+        public DbSet<Superhero> Superheroes { get; set; }           
     }
 }
