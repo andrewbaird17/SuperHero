@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SuperheroProject.Data;
 using SuperheroProject.Models;
@@ -16,31 +17,85 @@ namespace SuperheroProject.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        // GET: Superhero
+        public ActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Create()
+        // GET: Superhero/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
 
+        // GET: Superhero/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Superhero/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Superhero superhero)
+        public ActionResult Create(Superhero superhero)
         {
             if(ModelState.IsValid)
             {
                 _context.Superheroes.Add(superhero);
                 _context.SaveChanges();
-                return View();
+                return RedirectToAction("Index");
             }
             else
             {
-                return View(superhero);
+                return 
             }
+        }
 
+        // GET: Superhero/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: Superhero/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Superhero/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Superhero/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
