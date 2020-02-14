@@ -33,7 +33,7 @@ namespace SuperheroProject.Controllers
             if(ModelState.IsValid)
             {
                 _context.Superheroes.Add(superhero);
-                _context.Savechanges();
+                _context.SaveChanges();
                 return View();
             }
             else
