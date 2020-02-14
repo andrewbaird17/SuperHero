@@ -62,7 +62,7 @@ namespace SuperheroProject.Controllers
         // POST: Superhero/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id,Superhero superhero)
         {
             try
             {
