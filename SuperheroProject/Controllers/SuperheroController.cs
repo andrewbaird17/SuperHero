@@ -23,20 +23,16 @@ namespace SuperheroProject.Controllers
             return View(_context.Superheroes.ToList());
         }
 
-        // GET: Superhero/Details/5
         public ActionResult Details(int Id)
         {
             return View(_context.Superheroes.Find(Id));
         }
-
-        // GET: Superhero/Create
         public ActionResult Create()
         {
             Superhero superhero = new Superhero();
             return View();
         }
 
-        // POST: Superhero/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Superhero superhero)
@@ -53,13 +49,11 @@ namespace SuperheroProject.Controllers
             }
         }
 
-        // GET: Superhero/Edit/5
         public ActionResult Edit(int id)
         {
             return View(_context.Superheroes.Find(id));
         }
 
-        // POST: Superhero/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Superhero superhero)
@@ -76,13 +70,11 @@ namespace SuperheroProject.Controllers
             }
         }
 
-        // GET: Superhero/Delete/5
         public ActionResult Delete(int id)
         {
             return View(_context.Superheroes.Find(id));
         }
 
-        // POST: Superhero/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Superhero superhero)
