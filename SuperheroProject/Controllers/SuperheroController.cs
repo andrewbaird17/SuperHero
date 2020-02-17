@@ -87,18 +87,9 @@ namespace SuperheroProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Superhero superhero)
         {
-            if(ModelState.IsValid)
-            {
-                _context.Superheroes.Remove(superhero);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-
-                return Delete(id);
-            }
-
+            _context.Superheroes.Remove(superhero);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
