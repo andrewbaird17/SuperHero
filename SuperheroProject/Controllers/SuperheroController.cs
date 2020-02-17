@@ -30,7 +30,7 @@ namespace SuperheroProject.Controllers
         public ActionResult Create()
         {
             Superhero superhero = new Superhero();
-            return View();
+            return View(superhero);
         }
 
         [HttpPost]
