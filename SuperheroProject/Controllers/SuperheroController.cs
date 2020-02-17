@@ -24,9 +24,9 @@ namespace SuperheroProject.Controllers
         }
 
         // GET: Superhero/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int Id)
         {
-            return View();
+            return View(_context.Superheroes.Find(Id));
         }
 
         // GET: Superhero/Create
@@ -41,7 +41,7 @@ namespace SuperheroProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Superhero superhero)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Superheroes.Add(superhero);
                 _context.SaveChanges();
@@ -56,30 +56,30 @@ namespace SuperheroProject.Controllers
         // GET: Superhero/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(_context.Superheroes.Find(id));
         }
 
         // POST: Superhero/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id,Superhero superhero)
+        public ActionResult Edit(int id, Superhero superhero)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
+                _context.Superheroes.Update(superhero);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                return Edit(id);
             }
         }
 
         // GET: Superhero/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(_context.Superheroes.Find(id));
         }
 
         // POST: Superhero/Delete/5
@@ -87,9 +87,18 @@ namespace SuperheroProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Superhero superhero)
         {
-            _context.Superheroes.Remove(superhero);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                _context.Superheroes.Remove(superhero);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+
+                return Delete(id);
+            }
+
         }
     }
 }
